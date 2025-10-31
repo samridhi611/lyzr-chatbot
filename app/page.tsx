@@ -139,6 +139,7 @@ export default function Home() {
       const { reply } = await res.json();
 
       const botMessage: Message = { role: "assistant", content: reply };
+      console.log("Bot reply:", reply);
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error("Chat error:", error);
@@ -181,7 +182,7 @@ export default function Home() {
       </div>
 
       {/* Sticky ChatBox */}
-      <div className="fixed bottom-14 left-0 right-0 flex justify-center bg-[#f2f9f5]/80 backdrop-blur-md">
+      <div className="fixed bottom-8 left-0 right-0 flex justify-center bg-[#f2f9f5]/80 backdrop-blur-md">
         <div className="w-full max-w-3xl px-4 py-2">
           <ChatBox onSend={handleSend} />
         </div>

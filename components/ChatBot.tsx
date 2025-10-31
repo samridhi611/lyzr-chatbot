@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import { Send } from "lucide-react";
 
 export default function ChatBox({ onSend }: { onSend: (msg: string) => void }) {
@@ -12,6 +12,13 @@ export default function ChatBox({ onSend }: { onSend: (msg: string) => void }) {
     setInput("");
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // prevent newline
+      handleSubmit(e as any); // send message
+    }
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -20,6 +27,7 @@ export default function ChatBox({ onSend }: { onSend: (msg: string) => void }) {
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Ask HR anything..."
         rows={3}
         className="flex-1 resize-none outline-none text-sm bg-transparent placeholder-gray-400"

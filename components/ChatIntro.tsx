@@ -1,17 +1,24 @@
-export default function ChatIntro({ onSend }: { onSend: (msg: string) => void }) {
+export default function ChatIntro({
+  onSend,
+}: {
+  onSend: (msg: string) => void;
+}) {
   const predefinedQuestions = [
-    "What are the company leave policies?",
-    "How can I apply for work from home?",
-    "What benefits are offered to employees?",
-    "How do I update my personal information?",
+    "How can I apply for leave?",
+    "How can I check my remaining leave balance?",
+    "What types of leave are available?",
+    "What is the approval process for leave requests?",
   ];
 
   return (
     <div className="flex flex-col items-center justify-center text-center mt-20">
       <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-8 max-w-lg">
-        <h2 className="text-xl font-semibold text-[#002d72] mb-2">SK Finance HR Assistant</h2>
+        <h2 className="text-xl font-semibold text-[#002d72] mb-2">
+          SK Finance HR Assistant
+        </h2>
         <p className="text-gray-600 text-sm mb-6">
-          I’m your virtual HR chatbot. Select a question below or type your own query to get started.
+          I’m your virtual HR chatbot. Select a question below or type your own
+          query to get started.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
